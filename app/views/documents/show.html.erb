@@ -1,0 +1,23 @@
+<div class="col-lg-12">
+    
+    <div class="card rounded-0 mt-5 mb-5">
+        <div class="card-body ">
+            <h1 class="text-center mb-5 me-5 bg-info">Document Details </h1>
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <p class="lead ms-5"><strong>ID: </strong><%= @document.id %></p>
+                    <p class="lead ms-5"><strong>Name: </strong><%= @document.name %></p>
+                    <p class="lead ms-5"><strong>Type: </strong><%= @document.doc_type %></p>
+                    <p class="lead ms-5"><strong>Employee: </strong><%= @document.employee_id%></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%= link_to 'Edit',edit_document_path, class: 'btn btn-primary btn-lg' %>
+
+    <%= link_to 'Back to Documents list',documents_path, class: 'btn btn-outline-primary btn-lg' %>
+
+    <td> <%= link_to 'Employee show Page',employee_path(@document.employee_id), class: 'btn btn-outline-primary btn-lg' %> </td>
+
+</div>

@@ -1,0 +1,79 @@
+<div class="col-lg-12">
+    
+    <div class="card rounded-0 mt-5 mb-5">
+        <div class="card-body ">
+            <h1 class="text-center mb-5 me-5 bg-info">Employee Details </h1>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="ms-5">Personal Information</h3>
+                    <p class="lead ms-5"><strong>ID: </strong><%= @employee.id %></p>
+                    <p class="lead ms-5"><strong>First Name: </strong><%= @employee.first_name %></p>
+                    <p class="lead ms-5"><strong>Middle Name: </strong><%= @employee.middle_name.present? ? @employee.middle_name : '--NA--' %></p>                    
+                    <p class="lead ms-5"><strong>Last Name: </strong><%= @employee.last_name %></p>
+                    <p class="lead ms-5"><strong>Email: </strong><%= @employee.email %></p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="ms-5">Address Information</h3>                   
+                    <p class="lead ms-5"><strong>City: </strong><%= @employee.city %></p>
+                    <p class="lead ms-5"><strong>State: </strong><%= @employee.state %></p>
+                    <p class="lead ms-5"><strong>Pincode: </strong><%= @employee.pincode %></p>
+                </div>
+            </div>
+
+            <% if @employee.documents.present?%>
+                <div class="row">
+                    <h1 class="text-center mb-4 mt-4 me-5 bg-info">Employee Documents Details </h1> 
+                    <div class='col-lg-4'>
+                        <p class='lead ms-3'><h4>Document Name</h4></p>
+                    </div>
+                    <div class='col-lg-4'>
+                        <p class='lead '><h4>Document Type</h4></p>
+                    </div>
+                    <div class='col-lg-4'>
+                        <p class='lead '><h4>Actions</h4></p>
+                    </div>
+                </div>
+                <% @employee.documents.each do |document|%>
+                    <div class="card mb-4">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class='col-lg-4'>
+                                    <p class='lead'> <%= document.name %> </p>
+                                </div>
+                                <div class='col-lg-4'>
+                                    <p class='lead'> <%= document.doc_type %> </p>
+                                </div>
+                                <div class='col-lg-4'>
+
+
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/documents/edit_by_employee/<%= document.employee_id %>" class="dropdown-item bg-outline-info border">Edit</a></li>
+                                            <li><a href="/documents/show_by_employee/<%= document.employee_id %>" class="dropdown-item bg-outline-info border">Show</a></li>
+                                            <li><a href="/documents/destroy_by_employee/<%= document.employee_id %>" class="dropdown-item bg-outline-info ">Delete</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+              
+            <% end %>
+        </div>
+    </div> 
+
+
+    <%= link_to 'Edit Employee',edit_employee_path, class: 'btn btn-primary btn-lg' %>
+
+    <%= link_to 'Back to employee',employees_path, class: 'btn btn-outline-primary btn-lg ' %>
+    <%= link_to "Create New Document", new_document_path,class: " btn btn-outline-primary btn-lg"%>
+
+
+</div>

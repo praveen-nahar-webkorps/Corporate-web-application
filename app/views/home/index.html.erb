@@ -1,0 +1,18 @@
+<h1><%= @praveen%> <h1>
+
+<p><%= @sub_title%></p>
+ 
+<%= render '/shared/links' %>
+
+<%= render 'shared/dummy_content' %>
+
+<div class="row">
+        <div class="col-lg-3 mt-4 mb-4">
+            <%= link_to "List of Employees", employees_path, class: "btn btn-outline-primary btn-lg rounded-0" %>
+            </div>
+         
+        <div class="col-lg-4 mt-4 mb-4">
+             <%= link_to "List of Employee Documents", documents_path, class: "btn btn-outline-primary btn-lg rounded-0" %>
+        </div>
+</div>
+

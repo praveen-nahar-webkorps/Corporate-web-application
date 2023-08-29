@@ -1,0 +1,97 @@
+<%= form_with(model: @employee, data: {turbo: false}) do |form|%>
+    <div class="row">
+
+
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :first_name, class: 'mb-2'%>
+                <%= form.text_field :first_name, class: 'form-control form-control-lg rounded-0'%>
+                <% @employee.errors.full_messages_for(:first_name).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %> 
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :middle_name, class: 'mb-2'%>
+                <%= form.text_field :middle_name, class: 'form-control form-control-lg rounded-0'%>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :last_name, class: 'mb-2'%>
+                <%= form.text_field :last_name, class: 'form-control form-control-lg rounded-0'%>
+                
+                <% @employee.errors.full_messages_for(:last_name).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %>
+             </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <%= form.label :Email, class: 'mb-2 mt-4'%>
+                <%= form.email_field :email, class: 'form-control form-control-lg rounded-0'%>
+
+                <% @employee.errors.full_messages_for(:email).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :City, class: 'mb-2 mt-4'%>
+                <%= form.text_field :city, class: 'form-control form-control-lg rounded-0'%>
+
+                <% @employee.errors.full_messages_for(:city).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :State, class: 'mb-2 mt-4'%>
+                <%= form.text_field :state, class: 'form-control form-control-lg rounded-0'%>
+
+               <% @employee.errors.full_messages_for(:state).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="form-group">
+                <%= form.label :Pincode, class: 'mb-2 mt-4'%>
+                <%= form.text_field :pincode, class: 'form-control form-control-lg rounded-0'%>
+
+                <% @employee.errors.full_messages_for(:pincode).each do |message| %>
+                    <p class="text-danger"><%= message %></p>  
+                <% end %>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 mt-4">
+            <%= form.submit class: 'btn btn-primary btn-lg rounded-0'%>
+            <%= link_to "Back to Employees", employees_path, class: "btn btn-outline-primary btn-lg rounded-0" %>
+            </div>
+    </div>
+
+    <%= form.date_select :birth_date %>
+
+<% end %>

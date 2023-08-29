@@ -1,0 +1,54 @@
+<div class="col-lg-12">
+
+<div class="row text-danger mt-5 mb-4"><h1><%= flash[:notice]%></h1></div>
+
+    <div class="card rounded-0 mt-5 mb-4 bg-info text-white">
+        <div class="card-body ">
+        <h1 class="text-center">Listing All the employee</h1>
+        </div>
+    </div>
+
+    <%= link_to "Create New Employee", new_employee_path,class: "btn btn-primary btn-lg mb-4"%>
+
+    <table class="table table-bordered table-striped border-info">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name & Last name</th>
+                <th>Middle Name</th>
+                <th>Email</th>
+                <th>Full Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @employees.each do |e| %>
+                <tr>
+                    <td> <%= e.id%> </td>
+                    <td> <%= e.full_name %> </td>
+                    <td> <%= e.middle_name%> </td>
+                    <td> <%= e.email%> </td>
+                    <td> <%= e.full_address%> </td>
+                    <td> 
+
+
+                        <!-- Example single danger button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><%= link_to "Edit", edit_employee_path(e), class: 'dropdown-item bg-outline-primary border' %></li>
+                                <li><a href="/employees/<%= e.id %>" class="dropdown-item bg-outline-info border">Show</a></li>
+                                <li><%= link_to "Delete", employee_path(e), class: "dropdown-item bg-outline-danger ",method: :delete, data: { confirm: 'Are you sure to delete this content ? '}%></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><%= link_to "Create New Document", new_document_path,class: " dropdown-item bg-outline-danger"%></li>
+                            </ul>
+                        </div>
+                    
+                    </td>
+                </tr>   
+            <% end %>
+        </tbody>
+    </table>
+</div>
