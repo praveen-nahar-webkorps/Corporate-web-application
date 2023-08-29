@@ -23,6 +23,7 @@
             <% if @employee.documents.present?%>
                 <div class="row">
                     <h1 class="text-center mb-4 mt-4 me-5 bg-info">Employee Documents Details </h1> 
+
                     <div class='col-lg-4'>
                         <p class='lead ms-3'><h4>Document Name</h4></p>
                     </div>
@@ -34,9 +35,13 @@
                     </div>
                 </div>
                 <% @employee.documents.each do |document|%>
+                   
                     <div class="card mb-4">
                         <div class="card-body ">
                             <div class="row">
+
+                            
+
                                 <div class='col-lg-4'>
                                     <p class='lead'> <%= document.name %> </p>
                                 </div>
